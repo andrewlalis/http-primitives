@@ -1,0 +1,16 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/http-primitives
+http-primitives.so
+http-primitives.dylib
+http-primitives.dll
+http-primitives.a
+http-primitives.lib
+http-primitives-test-*
+*.exe
+*.pdb
+*.o
+*.obj
+*.lst

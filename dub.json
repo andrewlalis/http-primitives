@@ -1,0 +1,10 @@
+{
+	"authors": [
+		"Andrew Lalis"
+	],
+	"copyright": "Copyright © 2024, Andrew Lalis",
+	"description": "Data structures and interfaces for HTTP capabilities in D.",
+	"license": "MIT",
+	"name": "http-primitives",
+	"targetType": "sourceLibrary"
+}
