@@ -74,6 +74,38 @@ HttpRequestHandler wrapHandler(F)(F f) if (isHttpRequestHandler!F) {
     };
 }
 
+/**
+ * Helper method that converts a function accepting a referenced HTTP request
+ * into an HttpRequestHandler interface type.
+ * Params:
+ *   f = The function to wrap.
+ * Returns: An implementation of `HttpRequestHandler` that passes its request
+ * to the given function.
+ */
+HttpRequestHandler wrapHandler(void function(ref HttpRequest) f) {
+    return new class HttpRequestHandler {
+        void handle(ref HttpRequest request, ref HttpResponse response) {
+            f(request);
+        }
+    };
+}
+
+/**
+ * Helper method that converts a function accepting a referenced HTTP response
+ * into an HttpRequestHandler interface type.
+ * Params:
+ *   f = The function to wrap.
+ * Returns: An implementation of `HttpRequestHandler` that passes its response
+ * to the given function.
+ */
+HttpRequestHandler wrapHandler(void function(ref HttpResponse) f) {
+    return new class HttpRequestHandler {
+        void handle(ref HttpRequest request, ref HttpResponse response) {
+            f(response);
+        }
+    };
+}
+
 unittest {
     int x = 0;
     void test1(ref HttpRequest req, ref HttpResponse resp) {
